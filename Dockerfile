@@ -2,7 +2,7 @@ FROM python:3.8
 
 RUN mkdir /app 
 
-COPY /status /app/app
+COPY /shortener /app/app
 COPY pyproject.toml /app 
 WORKDIR /app
 
