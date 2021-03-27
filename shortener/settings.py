@@ -1,4 +1,4 @@
-name = "inventory"
+name = "🗃️ inventory"
 base_url = "i.hsp.sh"
 
 main_url = "//hsp.sh"
