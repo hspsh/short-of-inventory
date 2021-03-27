@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% macro check_flag(flag) -%}
+    {% if flag -%}
+        selected
+    {%- endif %}
+{%- endmacro %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{{ site_name }}{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}"
+          rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    {% block header %}
+        <nav class="nav">
+            <a class="navbar-brand" href="/">{{ self.title() }}</a>
+            <a class="nav-link btn btn-outline-primary" href="/editor/new">create</a>
+            <a class="nav-link" href="/send_raw">send raw</a>
+        </nav>
+    {% endblock %}
+
+    {% block flashes %}
+        {% include 'flashes.html' %}
+    {% endblock %}
+
+    {% block content %} {% endblock %}
+
+</div>
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+</body>
+</html>

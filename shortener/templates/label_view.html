@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>{{ label.code }}</h2>
+    <p>label created: {{label.created_datetime}}</p>
+    <p>
+        <form action="" method="post">
+            <div class="form-group">
+                <textarea class="form-control" style="font-family:monospace;" name="raw" rows="2">{{label.raw}}</textarea>
+            </div>
+            {{/*  <input class="btn btn-primary" type="submit" value="Save" name="save" />  */}}
+            <a class="btn btn-outline-primary" href="{{ print_url }}">Print</a>
+        </form>
+    </p>
+{% endblock %}
