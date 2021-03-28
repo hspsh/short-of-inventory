@@ -24,16 +24,10 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-app.secret_key = 69420
-
-# cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+app.config.from_object('shortener.settings')
 
 common_vars_tpl = {
-    "version": __version__,
-    "site_name": settings.name,
-    "base_url": settings.base_url,
-    "wiki_url": settings.wiki_url,
-    "git_url": settings.git_url,
+    "app": app.config.get_namespace('APP_')
 }
 
 
