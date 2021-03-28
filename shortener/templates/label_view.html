@@ -1,7 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
     <h2>{{ label.code }}</h2>
+    <p><a href="{{ prev_code }}">< {{ prev_code }}</a> <a href="/{{ next_code }}">{{ next_code }} ></a></p>
     <p>label created: {{label.created_datetime}}</p>
+    <p>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in items %}
+              <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ item.name }}</td>
+                <td>{% for r in item.redirects %}
+                    <a class="" target="_blank" href="{{ r.url }}">{{ r.name }}</a>
+                    {% endfor %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </p>
     <p>
         <form action="" method="post">
             <div class="form-group">

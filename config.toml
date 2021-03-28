@@ -1,0 +1,8 @@
+[[location.redirects]]
+name = "Print label"
+url = "http://banana.at.hsp.net.pl:8000/print/7?code={code}&raw={raw}"
+
+
+[[item.redirects]]
+name = "Wiki"
+url = "https://wiki.hsp.sh/p/{name}"
