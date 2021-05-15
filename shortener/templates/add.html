@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Add label</h2>
+    <h3>Quick guide</h3>
+    <p>
+        <kbd>[##]</kbd> prefix code. From 1 to 3 letters. [C] for capacitors,  [R] for resistors, etc.<br/>
+        <kbd>;</kbd> line separator, max 2 separators, or max 3 lines.<br/>
+        <kbd>[C] 10pF;100pF</kbd> example label.
+    </p>
+    <p>
+        <form action="" method="post">
+            <div class="form-group">
+                <textarea class="form-control" style="font-family:monospace;" name="raw" rows="2"></textarea>
+            </div>
+            <button class="btn btn-outline-primary">Save</button>
+        </form>
+    </p>
+{% endblock %}

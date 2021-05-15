@@ -54,6 +54,18 @@ def build_redirect_urls(obj_config, obj):
         print(u)
         yield {**r, "url": u}
 
+@app.route("/add", methods=["GET", "POST"])
+def add():
+    if request.method == "POST":
+        raw = request.values.get("raw")
+        last_code = Label.select().order_by(Label.code)[-1].code
+        code = f"{(int(last_code, 16) + 1):0>4X}"
+        new_label = Label.create(code=code, raw=raw)
+        new_label.save()
+        return redirect(url_for("short", label_code=code))
+
+    return render_template("add.html", **common_vars_tpl)
+
 
 @app.route("/<label_code>", methods=["GET", "POST"])
 def short(label_code):
