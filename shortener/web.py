@@ -3,22 +3,23 @@ import logging
 import os
 import subprocess
 import tempfile
-from datetime import datetime
 import urllib
+from datetime import datetime
 from urllib.parse import quote_plus, urlencode
 
 from flask import (
     Flask,
-    flash,
-    render_template,
-    redirect,
-    url_for,
-    request,
-    jsonify,
     abort,
+    flash,
+    jsonify,
+    redirect,
+    render_template,
+    request,
+    url_for,
 )
 
-from shortener.database import db, Label
+from shortener.database import Label, db
+
 from .settings import config
 
 logging.basicConfig(level=logging.INFO)
@@ -53,6 +54,7 @@ def build_redirect_urls(obj_config, obj):
         u = r["url"].format(**escaped)
         print(u)
         yield {**r, "url": u}
+
 
 @app.route("/add", methods=["GET", "POST"])
 def add():

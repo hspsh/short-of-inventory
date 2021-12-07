@@ -1,4 +1,5 @@
 import os
+
 from tomlkit import loads
 
 APP_VERSION = "0.1.0"
